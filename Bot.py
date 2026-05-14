@@ -1,13 +1,27 @@
+import os
 import json
 import time
 import urllib.parse
 import urllib.request
 
 
-BOT_TOKEN = ""
-ADMIN_ID =  
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+ADMIN_ID = os.getenv("ADMIN_ID")
+
+if not BOT_TOKEN:
+
+    raise RuntimeError("Не задан BOT_TOKEN в Railway Variables")
+
+if not ADMIN_ID:
+
+    raise RuntimeError("Не задан ADMIN_ID в Railway Variables")
+
+ADMIN_ID = int(ADMIN_ID)
 
 API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}/"
+
+
 
 user_states = {}
 user_data = {}
